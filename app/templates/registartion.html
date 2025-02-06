@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <form class="registration-form" method="POST" action="/register">
+      <h2>Зарегистрироваться в SALESMETRIC</h2>
+      <input
+        type="email"
+        name="email"
+        placeholder="Электронная почта"
+        required
+      />
+      <input type="password" name="password" placeholder="Пароль" required />
+      <input
+        type="text"
+        name="organization"
+        placeholder="Ваша организация"
+        required
+      />
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+    <div class="login">
+      <a href="/login">Войти в аккаунт</a>
+    </div>
+  </body>
+</html>

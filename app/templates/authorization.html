@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вход в аккаунт</title>
+    <link href="{{ url_for('static', filename='css/autor.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h2>Вход в аккаунт</h2>
+        <form method="POST" action="/login">
+          <input
+            type="email"
+            name="email"
+            placeholder="Электронная почта"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Пароль"
+            required
+          />
+          <input
+            type="text"
+            name="organization"
+            placeholder="Ваша организация"
+            required
+          />
+          <button type="submit">Войти</button>
+        </form>
+        <div class="forgot-password">
+          <a href="#">Забыли пароль?</a>
+        </div>
+        <div class="register">
+          <p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

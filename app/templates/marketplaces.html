@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SALESMETRIC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketplaces.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1>SALESMETRIC</h1>
+      <div class="icons">
+        <span>⚙️</span>
+        <span>🔒</span>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="settings">
+        <h2>Настройка магазина</h2>
+        <ul>
+          <a href="#"><li>Статус магазина</li></a>
+          <a href="./mywarehouse.html"><li>Yandex Market</li></a>
+          <a href="./mywarehouse.html"><li>Wildberries</li></a>
+          <a href="./mywarehouse.html"><li>Ozon</li></a>
+          <a href="./mywarehouse.html"><li>Ваш склад</li></a>
+        </ul>
+      </div>
+
+      <div class="main-menu">
+        <h2>ИП Агеева</h2>
+        <p>Авторизация</p>
+        <input type="text" placeholder="CampaignID" />
+        <input type="text" placeholder="API токен" />
+
+        <div class="toggle">
+          <span>Статус магазина</span>
+          <label><input type="checkbox" checked /> Включить продажи</label>
+        </div>
+
+        <div class="toggle">
+          <span>Обновление магазина</span>
+          <label><input type="checkbox" checked /> Обновление остатков</label>
+          <label><input type="checkbox" checked /> Обновление цен</label>
+        </div>
+
+        <h3>Действия</h3>
+        <button class="button">Обновление цен и остатков</button>
+        <button class="button">Обновление только цен</button>
+        <button class="button">Обновление только остатков</button>
+        <button class="button">Удаление остатков</button>
+      </div>
+    </div>
+  </body>
+</html>

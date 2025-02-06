@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Товары</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1>Товары</h1>
+    </header>
+    <main>
+      <form id="apiForm">
+        <label for="apiToken">Введите API токен:</label>
+        <input
+          type="text"
+          id="apiToken"
+          name="apiToken"
+          placeholder="API токен Wildberries"
+          required
+        />
+        <button type="button" id="fetchDataBtn">Получить данные</button>
+      </form>
+      <div id="messages"></div>
+      <table>
+        <thead>
+          <tr>
+            <th>Название</th>
+            <th>Артикул</th>
+            <th>Статус</th>
+            <th>Остаток</th>
+            <th>Закупочная цена</th>
+            <th>Обновлено</th>
+          </tr>
+        </thead>
+        <tbody id="dataTable">
+          <!-- Данные будут добавляться сюда -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    document
+      .getElementById("fetchDataBtn")
+      .addEventListener("click", async () => {
+        const apiToken = document.getElementById("apiToken").value;
+        const messages = document.getElementById("messages");
+        const dataTable = document.getElementById("dataTable");
+        messages.textContent = "";
+        dataTable.innerHTML = "";
+
+        try {
+          const response = await fetch("/fetch_wb_data", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ apiToken }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+              data.items.forEach((item) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                            <td>${item.name}</td>
+                            <td>${item.article}</td>
+                            <td>${item.status}</td>
+                            <td>${item.remainder}</td>
+                            <td>${item.purchase_price}</td>
+                            <td>${item.updated}</td>
+                        `;
+                dataTable.appendChild(row);
+              });
+            } else {
+              messages.textContent = data.message || "Ошибка получения данных";
+              messages.className = "error";
+            }
+          } else {
+            messages.textContent = "Ошибка на сервере";
+            messages.className = "error";
+          }
+        } catch (error) {
+          messages.textContent = "Ошибка соединения с сервером";
+          messages.className = "error";
+        }
+      });
+  </script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WB API Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>WB API Viewer</h1>
+      <input id="apiKeyInput" type="text" placeholder="Enter WB API Key" />
+      <button onclick="fetchData()">Fetch Data</button>
+    </div>
+
+    <script>
+      async function fetchData() {
+        const apiKey = document.getElementById("apiKeyInput").value;
+        if (!apiKey) {
+          alert("Please enter a valid API key.");
+          return;
+        }
+
+        try {
+          const response = await fetch("/fetch", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ apiKey }),
+          });
+
+          if (!response.ok) {
+            const errorDetails = await response.json();
+            throw new Error(errorDetails.error || "Unknown error");
+          }
+
+          window.location.href = "/products";
+        } catch (error) {
+          alert(`Error: ${error.message}`);
+        }
+      }
+    </script>
+  </body>
+</html>

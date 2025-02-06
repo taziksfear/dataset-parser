@@ -1,0 +1,31 @@
+from app import db
+
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    supplierArticle = db.Column(db.String(120), unique=True, nullable=False)
+    subject = db.Column(db.String(120), nullable=False)
+    brand = db.Column(db.String(120), nullable=False)
+    category = db.Column(db.String(120), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+
+class ProductInventory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    last_change_date = db.Column(db.DateTime, nullable=False)
+    warehouse_name = db.Column(db.String(120), nullable=False)
+    supplier_article = db.Column(db.String(120), nullable=False)
+    nm_id = db.Column(db.Integer, nullable=False)
+    barcode = db.Column(db.String(120), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    in_way_to_client = db.Column(db.Integer, nullable=False)
+    in_way_from_client = db.Column(db.Integer, nullable=False)
+    quantity_full = db.Column(db.Integer, nullable=False)
+    category = db.Column(db.String(120), nullable=False)
+    subject = db.Column(db.String(120), nullable=False)
+    brand = db.Column(db.String(120), nullable=False)
+    tech_size = db.Column(db.String(120), nullable=False)
+    days_on_site = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    discount = db.Column(db.Float, nullable=False)
+    is_supply = db.Column(db.Boolean, nullable=False)
+    is_realization = db.Column(db.Boolean, nullable=False)
+    sc_code = db.Column(db.String(120), nullable=False)

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мой Склад</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mywarehouse.css') }}" />
+  </head>
+  <body>
+    <header>
+      <h1>Мой Склад</h1>
+    </header>
+    <main>
+      <form class="ware" method="POST" action="/upload" enctype="multipart/form-data">
+        <h2>Загрузите CSV файл</h2>
+        <input type="file" id="csvFile" name="file" accept=".csv" required />
+        <button type="submit">Отправить</button>
+      </form>
+      <p class="error" id="error"></p>
+      <table id="productsTable">
+        <thead>
+          <tr>
+            <th>Артикул</th>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Поставщик</th>
+            <th>Категория</th>
+            <th>Остаток</th>
+            <th>Цена</th>
+            <th>Дата обновления</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Список товаров появится здесь -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+</html>
