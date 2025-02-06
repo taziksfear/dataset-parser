@@ -14,11 +14,11 @@ ALLOWED_EXTENSIONS = {'csv'}
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@bp.route('/')
-def index():
-    return render_template('index.html')
+#@bp.route('/')
+#def index():
+#    return render_template('index.html')
 
-@bp.route('/login', methods=['GET', 'POST'])
+@bp.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
