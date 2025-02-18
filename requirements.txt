@@ -1,5 +1,5 @@
 autocommand==2.2.2
-bcc==0.30.0
+bcc==0.1.10
 beautifulsoup4==4.12.3
 blinker==1.8.2
 Brlapi==0.8.5
