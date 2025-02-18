@@ -1,11 +1,10 @@
-from flask import Flask, jsonify
+from flask import Flask
 from app import create_app
 
 app = create_app()
 
-@app.route('/')
-def hello():
-    return jsonify({"message": "Hello deloyment version"})
+from app.routes import bp as routes_bp
+app.register_blueprint(routes_bp)
 
 if __name__ == "__main__":
     app.run()
